@@ -1,0 +1,16 @@
+[package]
+name = "gnark-rs"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+rust2go = { version = "0.3.4" }
+tokio = { version = "1", features = ["full"] }
+
+[build-dependencies]
+rust2go = { version = "0.3.4" , features = ["build"] }
+
+[[bin]]
+name = "example"
+path = "src/main.rs"

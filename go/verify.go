@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 
 	"github.com/consensys/gnark-crypto/ecc"
 	"github.com/consensys/gnark/backend/groth16"
@@ -17,6 +18,12 @@ func init() {
 
 func (GnarkVerify) gnark_groth16_verify(id_param uint16, proof_param []byte, verify_key_param []byte,
 	witness_param []byte) bool {
+
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered in gnark_groth16_verify", r)
+		}
+	}()
 
 	id := ecc.ID(id_param)
 
@@ -42,6 +49,12 @@ func (GnarkVerify) gnark_groth16_verify(id_param uint16, proof_param []byte, ver
 
 func (GnarkVerify) gnark_plonk_verify(id_param uint16, proof_param []byte, verify_key_param []byte,
 	witness_param []byte) bool {
+
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered in gnark_plonk_verify", r)
+		}
+	}()
 
 	id := ecc.ID(id_param)
 
